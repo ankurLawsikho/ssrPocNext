@@ -1,18 +1,17 @@
 import EventItem from "./event-item";
 import classes from './event-list.module.css';
 
-function EventList (props) {
+function CourseList (props) {
     const { items } = props;
-
     return (
         <ul className={classes.list}>
-            {items.map(event => (
+            {items.map(course => (
                 <EventItem 
-                    key={event.id}
-                    id={event.id} 
-                    title={event.title} 
-                    location={event.location} 
-                    date={event.date} 
+                    key={course._id}
+                    id='e2'
+                    title={course.name}
+                    location={course.description}
+                    date={course.updatedAt}
                     image="images/coding-event.jpg"
                 />
             ))}
@@ -21,4 +20,4 @@ function EventList (props) {
     );
 }   
 
-export default EventList;
+export default CourseList;

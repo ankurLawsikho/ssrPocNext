@@ -5,13 +5,14 @@ function MainHeader (props) {
     return (
         <header className={classes.header}>
             <div className={classes.logo}>
-                <Link href='/'>NextEvents</Link>
+                <Link href='/'>SkillArbitrage</Link>
             </div>
             <nav className={classes.navigation}>
                 <ul>
                     <li>
-                        <Link href="/events">Brawse All Events</Link>
+                        <Link href="/events">Courses</Link> | <Link href="/about-us">About Us</Link>
                     </li>
+                   
                 </ul>
             </nav>
         </header>
