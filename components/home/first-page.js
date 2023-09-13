@@ -39,7 +39,7 @@ function FirstPage () {
                 </div>
 
                 <div className={classes.DivSecondChild}>
-                    <div class="mainImg"><img alt="" src="https://admin.skillarbitra.ge/assets/uploads/media-library/img4-1692698525.png" /></div>
+                    <div><img alt="" src="https://admin.skillarbitra.ge/assets/uploads/media-library/img4-1692698525.png" /></div>
                 </div>
             </div>
 
@@ -95,7 +95,7 @@ function FirstPage () {
 
             <div className={classes.normalDiv}>
                 <div className={classes.DivfirstChild}>
-                    <div class="mainImg"><img alt="" src="https://admin.skillarbitra.ge/assets/uploads/media-library/img4-1692698525.png" /></div>
+                    <div><img alt="" src="https://admin.skillarbitra.ge/assets/uploads/media-library/img4-1692698525.png" /></div>
                 </div>
 
                 <div className={classes.DivSecondChild}>
@@ -117,7 +117,7 @@ function FirstPage () {
                     </div>
 
                     <div >
-                        <div class="txtWrp"><span class="sbPara">We refuse to accept that you have to spend a fortune and several years of your life in a university to acquire the skills and credentials you need to grow in your career.</span></div>
+                        <div>We refuse to accept that you have to spend a fortune and several years of your life in a university to acquire the skills and credentials you need to grow in your career.</div>
                     </div>
                 </div>
             </div>

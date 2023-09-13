@@ -3,7 +3,7 @@ import classes from './main-footer.module.css';
 
 function MainFooter (props) {
     return (
-    <div class="container">
+    <div>
         {/* <div class="row">
         <div class="col-md-12 col-lg-6">
             <div class="row">
