@@ -1,7 +1,163 @@
 import Button from '../ui/button';
 import classes from './first-page.module.css';
 
+import { useState } from 'react';
+import { Col, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+
+
 function FirstPage () {
+
+    const [isSignUpForCourseModal, setIsSignUpForCourseModal] = useState(false);
+    const [isSignUpForServiceModal, setIsSignUpForServiceModal] = useState(false);
+
+    {/* Sign Up for Course Modal */}
+    <Modal size='lg' isOpen={isSignUpForCourseModal} toggle={() => setIsSignUpForCourseModal(!isSignUpForCourseModal)}>
+        <ModalHeader><h1>Upskill yourself with Skill Arbitrage!</h1></ModalHeader>
+        <ModalBody>
+            <form>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='name'>
+                                Your Name:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: John Doe'/>
+                        </div>
+                </Col>
+                </Row>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='email'>
+                                Your Email:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: xyz@email.com'/>
+                        </div>
+                </Col>
+                </Row>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='phoneNumber'>
+                                Phone Number:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: 123456789'/>
+                        </div>
+                </Col>
+                </Row>
+                <p>
+                    By submitting this form, I agree to SkillArbitrage and its 
+                    representatives contacting me through call, 
+                    SMS, email or WhatsApp even if I am registered under NDNC. 
+                    I also agree that I have read and understood the Terms of 
+                    Service and agree to abide by the same
+                </p>
+                <button className='btn mt-3' style={{
+                    backgroundColor: '#0b3629',
+                    color: 'white'
+                }}>
+                    Sign me Up
+                </button>
+            </form> 
+        </ModalBody>
+    </Modal>  
+    {/* Sign Up for Course Modal  */}
+
+
+    {/* Sign Up for Service Modal */}
+    <Modal size='lg' isOpen={isSignUpForServiceModal} toggle={() => setIsSignUpForServiceModal(!isSignUpForServiceModal)}>
+        <ModalHeader><h1>Upskill yourself with Skill Arbitrage!</h1></ModalHeader>
+        <ModalBody>
+            <form>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='name'>
+                                Your Name:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: John Doe'/>
+                        </div>
+                </Col>
+                </Row>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='email'>
+                                Your Email:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: xyz@email.com'/>
+                        </div>
+                </Col>
+                </Row>
+                <Row>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='phoneNumber'>
+                                Phone Number:
+                            </label>
+                            <input 
+                                type='text' 
+                                className='form-control'
+                                placeholder='Eg: 123456789'/>
+                        </div>
+                </Col>
+                </Row>
+
+                <Row>
+                    <Col lg={5}>
+                            <div>
+                                <label htmlFor='companyName'>
+                                    Company Name:
+                                </label>
+                                <input 
+                                    type='text' 
+                                    className='form-control'
+                                    placeholder='Eg: xyz company'/>
+                            </div>
+                    </Col>
+                    <Col lg={5}>
+                            <div>
+                                <label htmlFor='phoneNumber'>
+                                    Company Size:
+                                </label>
+                                <input 
+                                    type='text' 
+                                    className='form-control'
+                                    placeholder='Eg: 50'/>
+                            </div>
+                    </Col>
+                </Row>
+                <p>
+                    By submitting this form, I agree to SkillArbitrage and its representatives 
+                    contacting me through call, SMS, email or WhatsApp even if I am registered 
+                    under NDNC. I also agree that I have read and understood the Terms of Service 
+                    and agree to abide by the same
+                </p>
+                <button className='btn mt-3' style={{
+                    backgroundColor: '#0b3629',
+                    color: 'white'
+                }}>
+                    Sign me here
+                </button>
+            </form> 
+        </ModalBody>
+    </Modal>  
+    {/* Sign Up for Service Modal  */}
     
     return (
         <div>
@@ -35,7 +191,12 @@ function FirstPage () {
                         <div>Give your key people more time off, reduce work pressure on yourself and your main team so you can focus on things that really matter while remote workers take care of everything else</div>
                     </div>
 
-                    <Button>Sign up here</Button>
+                    <Button onClick={() => {
+                        console.log("kkkkkkkkkkkkk", isSignUpForCourseModal)
+                        setIsSignUpForCourseModal(true)
+                    }}>
+                        Sign up here
+                    </Button>
                 </div>
 
                 <div className={classes.DivSecondChild}>
@@ -71,7 +232,11 @@ function FirstPage () {
                     <div>
                         <div>Find freedom, say no to the 9-5 routine</div>
                     </div>
-                        <Button>Sign me up</Button>
+                        <Button onClick={() => {
+                            setIsSignUpForServiceModal(true)
+                        }}>
+                            Sign me up
+                        </Button>
                 </div>
             </div>
 
