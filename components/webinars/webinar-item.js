@@ -1,11 +1,11 @@
-import classes from './course-item.module.css';
+import classes from './webinar-item.module.css';
 import Button from "../ui/button";
 import DateIcon from "../icons/date-icon";
 import AddressIcon from "../icons/address-icon";
 import ArrowRightIcon from '../icons/arrow-right-icon';
 
 
-function CourseItem (props) {
+function WebinarItem (props) {
     const { title, image, date, location, id } = props;
 
     const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
@@ -32,8 +32,9 @@ function CourseItem (props) {
                         <address>{formattedAddress}</address>
                     </div>
                     <div className={classes.actions}>
-                        <Button link={exploreLink}>
-                            <span>Enroll Now</span>
+                        {/* <Button link={exploreLink}> */}
+                        <Button>
+                            <span>Register Now</span>
                             <span className={classes.icon}>
                                 <ArrowRightIcon />
                             </span>
@@ -45,4 +46,4 @@ function CourseItem (props) {
     )
 }
 
-export default CourseItem;
+export default WebinarItem;
