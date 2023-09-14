@@ -37,6 +37,32 @@ function TopHeader (props) {
     }
 
     // Form Submission //
+
+    // For User Login up
+    const userLoginFormHandler = async (e) => {
+        e.preventDefault()
+        
+        if (!emailForSignUp) {
+            setMsg("Enter Your Email !");
+            return
+        }
+
+        let payload = {
+            "email": emailForSignUp,
+        }
+
+        let responseDet = await apicall.userLigin(payload);
+        console.log("responseDet ====", responseDet)
+        if (responseDet.data && responseDet.data.code == 1) {
+            setMsg("You will get an otp in your mail!");
+        } else {
+            setMsg("Please give a valid mail!");
+        }
+       
+        reSetMsg()
+    }
+
+
     // For Sign up
     const signUpFormHandler = async (e) => {
         e.preventDefault()
@@ -170,14 +196,21 @@ function TopHeader (props) {
                                     <input 
                                         type='text' 
                                         className='form-control'
-                                        placeholder='Eg: xyz@email.com'/>
+                                        placeholder='Eg: xyz@email.com'
+                                        onChange={(e) => {
+                                            setEmailForSignUp(e.target.value)
+                                        }}
+                                    />
                                 </div>
                            </Col>
                         </Row>
+                        {msg?<p style={{
+                            color: 'red'
+                        }}>{msg}</p>:''}
                         <button className='btn mt-3' style={{
                             backgroundColor: '#0b3629',
                             color: 'white'
-                        }}>
+                        }} onClick={(e) => userLoginFormHandler(e)}>
                             Send Otp
                         </button>
                     </form>
