@@ -12,7 +12,7 @@ function MainHeader (props) {
                 <ul>
                     <li>
                         <Link href="/">Home</Link> | 
-                        <Link href="/events">Courses</Link> | 
+                        <Link href="/courses">Courses</Link> | 
                         <Link href="/about-us">About Us</Link> |
                         <Link href="/about-us">Webinar</Link>
                     </li>
