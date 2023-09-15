@@ -18,10 +18,12 @@ const modalSlice = createSlice({
         openModal (state, action) {
             if (action.payload.modal === "isLoginModal") {
                 state.isLoginModal = true;
+                state.isSignUpModal = false;  
             }
 
             if (action.payload.modal === "isSignUpModal") {
-                state.isSignUpModal = true;
+                state.isLoginModal = false;
+                state.isSignUpModal = true;    
             }
 
             if (action.payload.modal === "isSignUpForCourseModal") {
