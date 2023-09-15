@@ -1,0 +1,79 @@
+
+.firstDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 10%;
+    background-color: blue;
+}
+
+.midcontainer {
+    width: 100%;
+    align-content: center;
+    font-size: 1 rem;
+    color: white;
+    font-family: 'Fira', sans-serif;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+
+
+.subcontainer {
+    width: 100%;
+    font-size: 1.5rem;
+    color: white;
+    display: flex;
+    font-family: 'Fira', sans-serif;
+    justify-content: center;
+    align-items: center;
+    color: #94fdfd;
+}
+
+.sbHead {
+    display:block; 
+    font-size:17px; 
+    font-weight:700; 
+    margin:-10px 0 20px
+}
+
+.imgDiv {
+    justify-content: space-between;
+    padding: 1rem 2%;
+}
+
+.blueDivChild {
+    width: 60%;
+    justify-content: space-between;
+    padding: 1rem 10%;
+    color: #94fdfd;
+}
+.blueDiv {
+    align-items: center;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 10%;
+    background-color: blue;
+    margin: 10px;
+}
+
+.normalDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 10%;
+}
+
+.DivFirstChild {
+    width: 50%;
+    justify-content: space-between;
+    padding: 1rem 10%;
+}
+
+.DivSecondChild {
+    width: 50%;
+    justify-content: space-between;
+    padding: 1rem 10%;
+}
