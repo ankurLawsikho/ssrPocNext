@@ -1,3 +1,5 @@
+import { useSelector, useDispatch } from 'react-redux';
+
 import Link from 'next/link';
 import classes from './main-header.module.css';
 import Button from '../ui/button';
@@ -6,12 +8,12 @@ import { useState } from 'react';
 import { Col, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import apicall from '../../helper/apicall';
 
+import { modalActions } from '../../store/modal-slice';
+
 
 function TopHeader (props) {
-    const [isLoginModal, setIsLoginModal] = useState(false);
-    const [isSignUpModal, setIsSignUpModal] = useState(false);
-    const [isSignUpForCourseModal, setIsSignUpForCourseModal] = useState(false);
-    const [isSignUpForServiceModal, setIsSignUpForServiceModal] = useState(false);
+    const modal = useSelector(state => state.modal);
+    const dispatch = useDispatch();
 
     const [nameForSignUp, setNameForSignUp] = useState("");
     const [emailForSignUp, setEmailForSignUp] = useState("");
@@ -21,6 +23,8 @@ function TopHeader (props) {
 
     const [msg, setMsg] = useState(null);
 
+    
+    
     const reSetMsg = () => {
         setNameForSignUp("");
         setEmailForSignUp("");
@@ -29,10 +33,7 @@ function TopHeader (props) {
         setCompanySize("");
         setTimeout(() => {
             setMsg(null);
-            setIsSignUpModal(false);
-            setIsLoginModal(false);
-            setIsSignUpForCourseModal(false);
-            setIsSignUpForServiceModal(false);
+            dispatch(modalActions.closeModal())
         }, 3000)
     }
 
@@ -183,7 +184,7 @@ function TopHeader (props) {
         <header className={classes.topheader}>
  
             {/* Login Modal     */}
-            <Modal size='lg' isOpen={isLoginModal} toggle={() => setIsLoginModal(!isLoginModal)}>
+            <Modal size='lg' isOpen={modal.isLoginModal} toggle={() => dispatch(modalActions.closeModal())}>
                 <ModalHeader><h1>Login to your lawsikho account!</h1></ModalHeader>
                 <ModalBody>
                     <form>
@@ -220,7 +221,7 @@ function TopHeader (props) {
 
 
             {/* Sign Up Modal     */}
-            <Modal size='lg' isOpen={isSignUpModal} toggle={() => setIsSignUpModal(!isSignUpModal)}>
+            <Modal size='lg' isOpen={modal.isSignUpModal} toggle={() => dispatch(modalActions.closeModal())}>
                 <ModalHeader><h1>Create your skillArbitrage account!</h1></ModalHeader>
                 <ModalBody>
                     <form>
@@ -290,7 +291,7 @@ function TopHeader (props) {
 
 
             {/* Sign Up for Course Modal */}
-            <Modal size='lg' isOpen={isSignUpForCourseModal} toggle={() => setIsSignUpForCourseModal(!isSignUpForCourseModal)}>
+            <Modal size='lg' isOpen={modal.isSignUpForCourseModal} toggle={() => dispatch(modalActions.closeModal())}>
                 <ModalHeader><h1>Upskill yourself with Skill Arbitrage!</h1></ModalHeader>
                 <ModalBody>
                     <form>
@@ -368,7 +369,7 @@ function TopHeader (props) {
 
 
             {/* Sign Up for Service Modal */}
-            <Modal size='lg' isOpen={isSignUpForServiceModal} toggle={() => setIsSignUpForServiceModal(!isSignUpForServiceModal)}>
+            <Modal size='lg' isOpen={modal.isSignUpForServiceModal} toggle={() =>  dispatch(modalActions.closeModal())}>
                 <ModalHeader><h1>Upskill yourself with Skill Arbitrage!</h1></ModalHeader>
                 <ModalBody>
                     <form>
@@ -471,11 +472,6 @@ function TopHeader (props) {
             </Modal>  
             {/* Sign Up for Service Modal  */}
 
-
-
-
-
-
             <div className={classes.contactNo}>
                 <Link href='/'>+91 93111 47267 (While dialing manually please prefix + before 91 i.e +919311147267)</Link>
             </div>
@@ -483,19 +479,19 @@ function TopHeader (props) {
                 <ul>
                     <li>
                         <LinkButton onClick={() => {
-                            setIsSignUpForCourseModal(true)
+                            dispatch(modalActions.openModal({"modal": "isSignUpForCourseModal"}))
                         }}>Sign Up For Course</LinkButton> | 
                         <LinkButton onClick={() => {
-                            setIsSignUpForServiceModal(true)
+                            dispatch(modalActions.openModal({"modal": "isSignUpForServiceModal"}))
                         }}>Sign Up for Service</LinkButton> | 
                         <LinkButton onClick={
                             () => {
-                                setIsLoginModal(true)
+                                dispatch(modalActions.openModal({"modal": "isLoginModal"}))
                             }
                         }>Login</LinkButton> | 
                         <LinkButton onClick={
                             () => {
-                                setIsSignUpModal(true)
+                                dispatch(modalActions.openModal({"modal": "isSignUpModal"}))
                             }
                         }>Sign Up</LinkButton>
                     </li>
