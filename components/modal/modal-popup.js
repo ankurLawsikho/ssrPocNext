@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 import classes from './modal.module.css';
 import { Col, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
@@ -17,7 +19,19 @@ function ModalPopup (props) {
     const [companyName, setCompanyName] = useState("");
     const [companySize, setCompanySize] = useState("");
 
+    const [valid, setValid] = useState(true);
     const [msg, setMsg] = useState(null);
+
+    const handleChange = (value) => {
+        setPhoneForSignUp(value);
+        setValid(validatePhoneNumber(value));
+    };
+
+    const validatePhoneNumber = (phoneForSignUp) => {
+        const phoneNumberPattern = /^\d{12}$/; // Validates a 10-digit phone number
+
+        return phoneNumberPattern.test(phoneForSignUp);
+    };
 
     const reSetMsg = () => {
         setNameForSignUp("");
@@ -70,7 +84,7 @@ function ModalPopup (props) {
             return
         }
 
-        if (!phoneForSignUp) {
+        if (!phoneForSignUp || !valid) {
             setMsg("Enter Your phone number !");
             return
         }
@@ -102,7 +116,7 @@ function ModalPopup (props) {
             return
         }
 
-        if (!phoneForSignUp) {
+        if (!phoneForSignUp || !valid) {
             setMsg("Enter Your phone number !");
             return
         }
@@ -135,7 +149,7 @@ function ModalPopup (props) {
             return
         }
 
-        if (!phoneForSignUp) {
+        if (!phoneForSignUp || !valid) {
             setMsg("Enter Your phone number !");
             return
         }
@@ -251,16 +265,18 @@ function ModalPopup (props) {
                             <label htmlFor='phoneNumber'>
                                 Phone Number:
                             </label>
-                            <input 
-                                type='number' 
-                                className='form-control'
-                                placeholder='Eg: 123456789'
-                                onChange={(e) => {
-                                    setPhoneForSignUp(e.target.value)
-                                }} />
+                            <PhoneInput
+                                country={'in'}
+                                value={phoneForSignUp}
+                                onChange={handleChange}
+                                inputProps={{
+                                    required: true,
+                                }}
+                            />
                         </div>
                     </Col>
                 </Row>
+                {!valid && <p>Please enter a valid 10-digit phone number.</p>}
                 {msg?<p style={{
                     color: 'red'
                 }}>{msg}</p>:''}
@@ -318,22 +334,23 @@ function ModalPopup (props) {
                            </Col>
                         </Row>
                         <Row>
-                           <Col lg={12}>
+                            <Col lg={12}>
                                 <div>
                                     <label htmlFor='phoneNumber'>
                                         Phone Number:
                                     </label>
-                                    <input 
-                                        type='text' 
-                                        className='form-control'
-                                        placeholder='Eg: 123456789'
-                                        onChange={(e) => {
-                                            setPhoneForSignUp(e.target.value)
+                                    <PhoneInput
+                                        country={'in'}
+                                        value={phoneForSignUp}
+                                        onChange={handleChange}
+                                        inputProps={{
+                                            required: true,
                                         }}
                                     />
                                 </div>
-                           </Col>
+                            </Col>
                         </Row>
+                        {!valid && <p>Please enter a valid 10-digit phone number.</p>}
 
                         {msg?<p style={{
                             color: 'red'
@@ -392,21 +409,23 @@ function ModalPopup (props) {
                            </Col>
                         </Row>
                         <Row>
-                           <Col lg={12}>
+                            <Col lg={12}>
                                 <div>
                                     <label htmlFor='phoneNumber'>
                                         Phone Number:
                                     </label>
-                                    <input 
-                                        type='text' 
-                                        className='form-control'
-                                        placeholder='Eg: 123456789'
-                                        onChange={(e) => {
-                                            setPhoneForSignUp(e.target.value)
-                                        }} />
+                                    <PhoneInput
+                                        country={'in'}
+                                        value={phoneForSignUp}
+                                        onChange={handleChange}
+                                        inputProps={{
+                                            required: true,
+                                        }}
+                                    />
                                 </div>
-                           </Col>
+                            </Col>
                         </Row>
+                        {!valid && <p>Please enter a valid 10-digit phone number.</p>}
 
                         <Row>
                             <Col lg={5}>
