@@ -20,18 +20,25 @@ function ModalPopup (props) {
     const [companySize, setCompanySize] = useState("");
 
     const [valid, setValid] = useState(true);
+    const [validEmail, setValidEmail] = useState(true);
     const [msg, setMsg] = useState(null);
 
     const handleChange = (value) => {
         setPhoneForSignUp(value);
         setValid(validatePhoneNumber(value));
     };
-
+    
     const validatePhoneNumber = (phoneForSignUp) => {
         const phoneNumberPattern = /^\d{12}$/; // Validates a 10-digit phone number
-
         return phoneNumberPattern.test(phoneForSignUp);
     };
+
+    const validateEmail = (emailForSignUp) => {
+        const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // Validates a 10-digit phone number
+        return emailPattern.test(emailForSignUp);
+    };
+
+
 
     const reSetMsg = () => {
         setNameForSignUp("");
@@ -49,8 +56,8 @@ function ModalPopup (props) {
     const userLoginFormHandler = async (e) => {
         e.preventDefault()
         
-        if (!emailForSignUp) {
-            setMsg("Enter Your Email !");
+        if (!emailForSignUp || !validEmail) {
+            setMsg("Enter a Valid Email !");
             return
         }
 
@@ -79,8 +86,8 @@ function ModalPopup (props) {
             return
         }
 
-        if (!emailForSignUp) {
-            setMsg("Enter Your email !");
+        if (!emailForSignUp || !validEmail) {
+            setMsg("Enter Valid email !");
             return
         }
 
@@ -111,7 +118,7 @@ function ModalPopup (props) {
             return
         }
 
-        if (!emailForSignUp) {
+        if (!emailForSignUp || !validEmail) {
             setMsg("Enter Your email !");
             return
         }
@@ -144,7 +151,7 @@ function ModalPopup (props) {
             return
         }
 
-        if (!emailForSignUp) {
+        if (!emailForSignUp || !validEmail) {
             setMsg("Enter Your email !");
             return
         }
@@ -186,21 +193,24 @@ function ModalPopup (props) {
         <ModalBody>
         <form>
             <Row>
-            <Col lg={12}>
-                    <div>
-                        <label htmlFor='email'>
-                            Email:
-                        </label>
-                        <input 
-                            type='text' 
-                            className='form-control'
-                            placeholder='Eg: xyz@email.com'
-                            onChange={(e) => {
-                                setEmailForSignUp(e.target.value)
-                            }}
-                        />
-                    </div>
-            </Col>
+                <Col lg={12}>
+                        <div>
+                            <label htmlFor='email'>
+                                Email:
+                            </label>
+                            <input 
+                                type='email' 
+                                className='form-control'
+                                placeholder='Eg: xyz@email.com'
+                                value={emailForSignUp}
+                                onChange={(e) => {
+                                    setEmailForSignUp(e.target.value)
+                                    setValidEmail(validateEmail(e.target.value));
+                                }}
+                            />
+                        </div>
+                </Col>
+                {!validEmail && <p>Enter a valid Email</p>}
             </Row>
             {msg?<p style={{
                 color: 'red'
@@ -250,14 +260,17 @@ function ModalPopup (props) {
                                 Email:
                             </label>
                             <input 
-                                type='text' 
+                                type='email' 
                                 className='form-control'
                                 placeholder='Eg: xyz@email.com'
+                                value={emailForSignUp}
                                 onChange={(e) => {
                                     setEmailForSignUp(e.target.value)
+                                    setValidEmail(validateEmail(e.target.value));
                                 }} />
                         </div>
                     </Col>
+                    {!validEmail && <p>Enter a valid Email</p>}
                 </Row>
                 <Row>
                     <Col lg={12}>
@@ -326,12 +339,15 @@ function ModalPopup (props) {
                                         type='text' 
                                         className='form-control'
                                         placeholder='Eg: xyz@email.com'
+                                        value={emailForSignUp}
                                         onChange={(e) => {
                                             setEmailForSignUp(e.target.value)
+                                            setValidEmail(validateEmail(e.target.value));
                                         }}
                                     />
                                 </div>
                            </Col>
+                           {!validEmail && <p>Enter a valid Email</p>}
                         </Row>
                         <Row>
                             <Col lg={12}>
@@ -399,14 +415,17 @@ function ModalPopup (props) {
                                         Your Email:
                                     </label>
                                     <input 
-                                        type='text' 
+                                        type='email' 
                                         className='form-control'
                                         placeholder='Eg: xyz@email.com'
+                                        value={emailForSignUp}
                                         onChange={(e) => {
                                             setEmailForSignUp(e.target.value)
+                                            setValidEmail(validateEmail(e.target.value));
                                         }} />
                                 </div>
                            </Col>
+                           {!validEmail && <p>Enter a valid Email</p>}
                         </Row>
                         <Row>
                             <Col lg={12}>
